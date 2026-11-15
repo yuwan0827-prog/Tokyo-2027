@@ -1493,7 +1493,7 @@
 <script>
 (function() {
   // 遵循規範：雲端與本機路徑包含年份
-  const DB_PATH = 'trips/Tokyo_Yuzawa_2027';
+  const DB_PATH = (() => { let p = localStorage.getItem('trip_pwd'); if (!p) { p = prompt('請輸入家庭通關密碼：'); if (p) localStorage.setItem('trip_pwd', p.trim()); } return 'trips/Tokyo_Yuzawa_2027_' + (p || ''); })();
   const STORAGE_KEY = 'Tokyo_Yuzawa_2027_app_data_v3';
   const DB_URL_STORAGE_KEY = 'Tokyo_Yuzawa_2027_db_url';
   const DEFAULT_DB_URL = 'https://family2027-default-rtdb.asia-southeast1.firebasedatabase.app';
